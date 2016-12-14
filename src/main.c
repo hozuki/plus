@@ -19,7 +19,7 @@ int main(int argc, const char *argv[]) {
     make_native_block_executable(block);
     plus1s_func func = (plus1s_func)block->code_exec;
     nint p = func();
-    // expected output: 12 (as hard-coded in code_win32.c)
+    // Expected output: the number you entered.
     printf("p = %u\n", p);
     destroy_native_block(block);
     return 0;
