@@ -1,9 +1,10 @@
-#include "../plus1s.h"
+#include "memory.h"
 
 #if defined(__ENV_PLATFORM_WINDOWS__)
 
 void *mem_alloc_page(size_t size) {
-    // MSDN: "This handle has the PROCESS_ALL_ACCESS access right to the process object. For more information, see Process Security and Access Rights."
+    // MSDN: https://msdn.microsoft.com/en-us/library/windows/desktop/ms683179.aspx
+    // "This handle has the PROCESS_ALL_ACCESS access right to the process object. For more information, see Process Security and Access Rights."
     HANDLE hProcess = GetCurrentProcess();
     PVOID *pMemory = VirtualAllocEx(hProcess, NULL, (DWORD)size, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
     return pMemory;
