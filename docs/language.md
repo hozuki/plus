@@ -2,14 +2,7 @@
 
 ## Higher Level
 
-```plain
-PLUS1S := "+" "1" "s"
-NUMBER := [1-9][\d]*
-LOOP_BEGIN := NUMBER "people" "do"
-LOOP_END := "done"
-LOOP := LOOP_BEGIN PLUS1S+ LOOP_END
-PROGRAM := (PLUS1S | LOOP)+
-```
+See [lexical](../src/lang/plus1s.lex) and [grammatical](../src/lang/plus1s.y) definitions.
 
 ## Bytecode
 
@@ -30,11 +23,10 @@ Size: 1 byte each
 - Value: `2`
 - Operands: None
 
-### JUMP
+### LOOP_START
 
 - Value: `3`
 - Operands:
-  - `dest`
+  - `count`
     - Size: (native integer size)
-    - Value: instruction offset (in our case, its index),
-             from the start of the program
+    - Value: number of increments in the loop

@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "plus1s.h"
+#include "lang/plus1s.tab.h"
+
+void yyset_in(FILE *_in_str);
 
 int main(int argc, const char *argv[]) {
     machine_code_template *template = init_machine_code_template();
@@ -22,5 +25,14 @@ int main(int argc, const char *argv[]) {
     // Expected output: the number you entered.
     printf("p = %u\n", p);
     destroy_native_block(block);
+
+    FILE *fp = NULL;
+    if (argc == 2) {
+        fp = fopen(argv[1], "r");
+        yyset_in(fp);
+        int yy = yyparse(); // 0=success
+        printf("Parse result: %d\n", yy);
+        fclose(fp);
+    }
     return 0;
 }

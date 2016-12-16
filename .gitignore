@@ -54,3 +54,4 @@ dkms.conf
 
 cmake-build-*/
 .idea/
+bin/

@@ -10,5 +10,7 @@ if ("${CYGWIN}" OR "${MINGW}")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static-libgcc -static-libstdc++")
 endif ()
 
-set(SOURCE_FILES src/main.c src/env.h src/plus1s.h src/machine_code_32bit.c src/memory_win.c src/code_block.c src/machine_code.c src/compile.c src/sysincl.h src/utils.c src/interpret.c src/code_block.h src/memory.h src/machine_code.h src/utils.h src/types.h src/compile.h src/interpret.h src/machine_code_64bit.c src/memory_unix.h)
+set(LANG_SOURCE src/lang/lex.yy.c src/lang/plus1s.tab.c src/lang/plus1s.tab.h)
+set(SOURCE_FILES ${LANG_SOURCE} src/main.c src/env.h src/plus1s.h src/machine_code_32bit.c src/memory_win.c src/code_block.c src/machine_code.c src/compile.c src/sysincl.h src/utils.c src/interpret.c src/code_block.h src/memory.h src/machine_code.h src/utils.h src/types.h src/compile.h src/interpret.h src/machine_code_64bit.c src/memory_unix.h)
+
 add_executable(plus1s ${SOURCE_FILES})
