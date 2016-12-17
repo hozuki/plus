@@ -18,6 +18,16 @@ Now I'm glad to announce that the JIT compiler runs on both x86 and x86-64
 processors, on Windows and (very likely) Linux/macOS. Tested environments are
 MinGW32 (32-bit Windows API) and Cygwin64 (64-bit Unix API).
 
+## Usage
+
+👩:👨✌👍👎?🐸:👍 👩：🀄👍？🐸:👍 👩:🀄📢?🐸:💨☔,📖✋ 👩:😳 🐸:🙅,🀄📢❌,🎥📖. [.](http://music.163.com/#/song?id=230067)
+
+Compile it first!
+
+```cmd
+plus1s <P1S text file>
+```
+
 ## Features
 
 A quick overview:
