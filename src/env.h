@@ -2,8 +2,10 @@
 
 #if defined(__x86_64__) || defined(_M_AMD64)
 #define __ENV_BIT_64__
+#define PRIiN PRIi64
 #else
 #define __ENV_BIT_32__
+#define PRIiN PRIi32
 #endif
 
 #if defined(__unix__) || defined(__APPLE__)

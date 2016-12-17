@@ -1,0 +1,15 @@
+// 154 seconds
++1s
++1s
++1s
+20 people do
+    // +1s // Yeah comments!
+done
+0 people do
+    +1s
+    // This loop will also be optimized.
+done
++1s
+50 people do
+    +1s +1s +1s
+done

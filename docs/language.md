@@ -2,7 +2,7 @@
 
 ## Higher Level
 
-See [lexical](../src/lang/plus1s.lex) and [grammatical](../src/lang/plus1s.y) definitions.
+See [lexical](../src/lang/plus1s.l) and [grammatical](../src/lang/plus1s.y) definitions.
 
 ## Bytecode
 
@@ -29,4 +29,4 @@ Size: 1 byte each
 - Operands:
   - `count`
     - Size: (native integer size)
-    - Value: number of increments in the loop
+    - Value: number of people (loop)

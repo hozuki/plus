@@ -22,7 +22,14 @@
 #include "sysincl.h"
 
 /* Compilation */
-#include "compile.h"
+#include "compiler.h"
 
 /* Interpretation */
-#include "interpret.h"
+#include "interpreter.h"
+
+#if !defined(TRUE)
+#define TRUE (1)
+#endif
+#if !defined(FALSE)
+#define FALSE (0)
+#endif

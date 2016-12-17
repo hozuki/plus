@@ -62,7 +62,7 @@
 
 
 /* Copy the first part of user declarations.  */
-#line 1 "plus1s.y" /* yacc.c:339  */
+#line 1 "D:\\Source\\C\\plus1s/src/lang/plus1s.y" /* yacc.c:339  */
 
 #include <stdio.h>
 #include "../compiler.h"
@@ -70,11 +70,8 @@
 extern int yylineno;
 extern char *yytext;
 
-#define YYSTYPE char *
-
 void yyerror(const char *str) {
     fprintf(stderr, "error: <%s> at line <%d>, string \"%s\"\n", str, yylineno, yytext);
-    compiler_destroy();
 }
 
 int yyparse(void);
@@ -85,7 +82,7 @@ int yywrap() {
     return 1;
 }
 
-#line 89 "plus1s.tab.c" /* yacc.c:339  */
+#line 86 "plus1s.tab.c" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -141,7 +138,7 @@ int yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 145 "plus1s.tab.c" /* yacc.c:358  */
+#line 142 "plus1s.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -439,8 +436,8 @@ static const yytype_uint8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    28,    28,    29,    31,    32,    35,    36,    38,    40,
-      42,    43,    45
+       0,    25,    25,    26,    28,    29,    32,    33,    35,    37,
+      39,    40,    42
 };
 #endif
 
@@ -1214,25 +1211,25 @@ yyreduce:
   switch (yyn)
     {
         case 8:
-#line 38 "plus1s.y" /* yacc.c:1646  */
-    { compiler_enter_loop((yyvsp[-2])); }
-#line 1220 "plus1s.tab.c" /* yacc.c:1646  */
+#line 35 "D:\\Source\\C\\plus1s/src/lang/plus1s.y" /* yacc.c:1646  */
+    { compiler_enter_loop(); }
+#line 1217 "plus1s.tab.c" /* yacc.c:1646  */
     break;
 
   case 9:
-#line 40 "plus1s.y" /* yacc.c:1646  */
-    { compiler_exit_loop(); }
-#line 1226 "plus1s.tab.c" /* yacc.c:1646  */
+#line 37 "D:\\Source\\C\\plus1s/src/lang/plus1s.y" /* yacc.c:1646  */
+    { compiler_enter_loop(); }
+#line 1223 "plus1s.tab.c" /* yacc.c:1646  */
     break;
 
   case 12:
-#line 45 "plus1s.y" /* yacc.c:1646  */
+#line 42 "D:\\Source\\C\\plus1s/src/lang/plus1s.y" /* yacc.c:1646  */
     { compiler_append_plus1s(); }
-#line 1232 "plus1s.tab.c" /* yacc.c:1646  */
+#line 1229 "plus1s.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1236 "plus1s.tab.c" /* yacc.c:1646  */
+#line 1233 "plus1s.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires

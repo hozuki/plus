@@ -1,38 +1,72 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <inttypes.h>
 #include "plus1s.h"
 #include "lang/plus1s.tab.h"
 
+#define PRINT_PROGRAM_INSTRUCTIONS 0
+
 void yyset_in(FILE *_in_str);
 
+void print_help();
+
 int main(int argc, const char *argv[]) {
-    machine_code_template *template = init_machine_code_template();
-    size_t size = template->init_code_len + template->return_code_len + template->function_call_code_len;
-    uint8_t imm[sizeof(nint)] = {0};
-    // Any number you like.
-    util_nint_to_endian_bytes((nint)12345678, imm, endian_type_little_endian);
-    native_code_block *block = create_native_block();
-    block->code_as_data = (uint8_t *)malloc(size);
-    block->size = size;
-    uint8_t *data = block->code_as_data;
-    memcpy(data, template->init_code, template->init_code_len);
-    memcpy(data + template->init_code_len, template->function_call_code, template->function_call_code_len);
-    memcpy(data + template->init_code_len + (template->function_call_code_len - sizeof(imm)), imm, sizeof(imm));
-    memcpy(data + template->init_code_len + template->function_call_code_len, template->return_code, template->return_code_len);
-    make_native_block_executable(block);
-    plus1s_func func = (plus1s_func)block->code_exec;
-    nint p = func();
-    // Expected output: the number you entered.
-    printf("p = %u\n", p);
-    destroy_native_block(block);
+    if (argc != 2) {
+        print_help();
+        return 0;
+    }
 
     FILE *fp = NULL;
-    if (argc == 2) {
-        fp = fopen(argv[1], "r");
-        yyset_in(fp);
-        int yy = yyparse(); // 0=success
-        printf("Parse result: %d\n", yy);
-        fclose(fp);
+    fp = fopen(argv[1], "r");
+    yyset_in(fp);
+    compiler_init();
+    init_machine_code_template();
+
+    int yy = yyparse();
+    fclose(fp);
+
+    if (yy != 0) {
+        printf("An error occurred during compiling. Exiting...\n");
+        return yy;
     }
-    return 0;
+
+    native_code_block *native = interpreter_generate_machine_code();
+    plus1s_func func = (plus1s_func)native->code_exec;
+    if (func) {
+        // Execute our generated function!
+        nint seconds = func();
+        printf("Crowdfunded %" PRIiN " seconds.\n", seconds);
+    } else {
+        printf("Failed to crowdfund time...\n");
+    }
+    destroy_native_block(native);
+
+#if PRINT_PROGRAM_INSTRUCTIONS
+    bytecode_block *bytecode = g_compiler.first_block;
+    while (bytecode) {
+        printf("instr: ");
+        switch (bytecode->instruction) {
+            case vm_instr_increment:
+                printf("increment");
+                break;
+            case vm_instr_loop_start:
+                printf("loop start (with %d increments)", bytecode->operands.loop_start.number_of_increment);
+                break;
+            case vm_instr_loop_end:
+                printf("loop end");
+                break;
+            default:
+                printf("unknown");
+                break;
+        }
+        printf("\n");
+        bytecode = bytecode->next;
+    }
+#endif
+    compiler_destroy();
+
+    return yy;
+}
+
+void print_help() {
+    printf("Usage: plus1s <source>\n");
 }
