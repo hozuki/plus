@@ -14,6 +14,10 @@ The executable reads P1S source code from file, translates them into bytecode,
 compiles them to machine code, and finally runs the code. The language is so
 simple that all it can manipulate is a accumulator.
 
+Now I'm glad to announce that the JIT compiler runs on both x86 and x86-64
+processors, on Windows and (very likely) Linux/macOS. Tested environments are
+MinGW32 (32-bit Windows API) and Cygwin64 (64-bit Unix API).
+
 ## Features
 
 A quick overview:
@@ -53,9 +57,6 @@ Thanks to this <del>too young too</del> simple language form, some<del>times</de
 optimizations can be done. (But what's the meaning of those optimizations? Why don't
 we simply add the numbers together?)
 
-At this point the language only supports 32-bit machine code generation, on Windows.
-Support for 64-bit and other platforms may be added later.
-
 [Inspiration](https://github.com/IndeedPlusPlus/jit-in-10-minutes)
 
 ## Prerequisites
@@ -64,8 +65,9 @@ You will need `lex`/`flex` and `yacc`/`bison` to compile the language definition
 If you don't have them, keep calm and find pre-generated C sources under
 `src/lang`.
 
-A Unix-like building environment is required. If your OS is Windows, please build
-it with MinGW/Cygwin.
+A Unix-like building environment is required. I haven't try Visual C++ yet and I
+think Visual C++ should be able to compile this project. If your OS is Windows and
+you are uncertain, please build it with MinGW/Cygwin.
 
 Most importantly, though you don't need knowledge in compiler principles to
 understand the code, you must have a concept how executables work in operating systems,

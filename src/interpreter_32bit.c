@@ -50,8 +50,8 @@ native_code_block *interpreter_generate_machine_code() {
     current_offset += g_machine_code.init_code_len;
     bytecode_block *bytecode = g_compiler.first_block;
     uint8_t nint_buffer[sizeof(nint)] = {0};
-    nint address_offset;
     while (bytecode) {
+        nint address_offset;
         switch (bytecode->instruction) {
             case vm_instr_increment:
                 memcpy(native->code_as_data + current_offset, g_machine_code.increment_code, g_machine_code.increment_code_len);
@@ -89,7 +89,7 @@ native_code_block *interpreter_generate_machine_code() {
 
     printf("Code data: ");
     for (int i = 0; i < native->size; ++i) {
-        printf("%02x ", ((size_t)native->code_as_data[i] & 0xff));
+        printf("%02x ", ((uint32_t)native->code_as_data[i] & 0xff));
     }
     printf("\n");
 

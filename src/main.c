@@ -3,7 +3,7 @@
 #include "plus1s.h"
 #include "lang/plus1s.tab.h"
 
-#define PRINT_PROGRAM_INSTRUCTIONS 0
+#define PRINT_PROGRAM_INSTRUCTIONS 1
 
 void yyset_in(FILE *_in_str);
 
@@ -49,7 +49,7 @@ int main(int argc, const char *argv[]) {
                 printf("increment");
                 break;
             case vm_instr_loop_start:
-                printf("loop start (with %d increments)", bytecode->operands.loop_start.number_of_increment);
+                printf("loop start (with %" PRIiN " increments)", bytecode->operands.loop_start.number_of_increment);
                 break;
             case vm_instr_loop_end:
                 printf("loop end");
