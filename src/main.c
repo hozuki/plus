@@ -3,7 +3,7 @@
 #include "plus1s.h"
 #include "lang/plus1s.tab.h"
 
-#define PRINT_PROGRAM_INSTRUCTIONS 1
+#define PRINT_PROGRAM_INSTRUCTIONS 0
 
 void yyset_in(FILE *_in_str);
 

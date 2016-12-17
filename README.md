@@ -12,7 +12,7 @@ Please, donate 1 second (+1s) for his kindness.
 I don't have that much of time so I wrote this simple two-tier JIT compiler.
 The executable reads P1S source code from file, translates them into bytecode,
 compiles them to machine code, and finally runs the code. The language is so
-simple that all it can manipulate is a accumulator.
+simple that all it can manipulate is an accumulator.
 
 Now I'm glad to announce that the JIT compiler runs on both x86 and x86-64
 processors, on Windows and (very likely) Linux/macOS. Tested environments are
@@ -20,7 +20,7 @@ MinGW32 (32-bit Windows API) and Cygwin64 (64-bit Unix API).
 
 ## Usage
 
-👩:👨✌👍👎?🐸:👍 👩：🀄👍？🐸:👍 👩:🀄📢?🐸:💨☔,📖✋ 👩:😳 🐸:🙅,🀄📢❌,🎥📖. [.](http://music.163.com/#/song?id=230067)
+> 👩:👨✌👍👎?🐸:👍 👩:🀄👍?🐸:👍 👩:🀄📢?🐸:💨☔,📖✋ 👩:😳 🐸:🙅,🀄📢❌,🎥📖. [source](http://music.163.com/#/song?id=230067)
 
 Compile it first!
 
