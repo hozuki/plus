@@ -154,7 +154,7 @@ push ebp
 mov  ebp, esp
 sub  esp, N ; size of all variables used in this function
 push ecx ; preserve the value of ECX register which will be used as the loop counter
-xor eax eax ; clear the accumulator
+xor eax, eax ; clear the accumulator
 ```
 
 And when a function exits, restore the stack and return:
