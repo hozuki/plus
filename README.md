@@ -11,12 +11,16 @@ Please, donate 1 second (+1s) for his kindness.
 
 I don't have that much of time so I wrote this simple two-tier JIT compiler.
 The executable reads P1S source code from file, translates them into bytecode,
-compiles them to machine code, and finally runs the code. The language is so
+compiles them to machine code, and finally executes the code. The language is so
 simple that all it can manipulate is an accumulator.
 
 Now I'm glad to announce that the JIT compiler runs on both x86 and x86-64
 processors, on Windows and (very likely) Linux/macOS. Tested environments are
-MinGW32 (32-bit Windows API) and Cygwin64 (64-bit Unix API).
+MinGW32 (32-bit Windows API) and Cygwin64 (64-bit UNIX API).
+
+## How It Works?
+
+Read the document [here](docs/how-it-works.md).
 
 ## Usage
 
@@ -75,7 +79,7 @@ You will need `lex`/`flex` and `yacc`/`bison` to compile the language definition
 If you don't have them, keep calm and find pre-generated C sources under
 `src/lang`.
 
-A Unix-like building environment is required. I haven't try Visual C++ yet and I
+A UNIX-compliant building environment is required. I haven't tried Visual C++ yet and I
 think Visual C++ should be able to compile this project. If your OS is Windows and
 you are uncertain, please build it with MinGW/Cygwin.
 
